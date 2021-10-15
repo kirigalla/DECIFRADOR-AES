@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/normalizar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="assets/js/FileSaver.js"></script>
+    <script src="assets/js/aes.js"></script>
+    <title>Cifrar con AES</title>
+</head>
+
+<body>
+    <div id="arrow_right">
+        <a href="descifrar.html"><img src="assets/img/flecha_der.png"></a>
+    </div>
+
+    <h1>CIFRADO AES</h1>
+
+    <h2>Ingresa el texto a cifrar</h2>
+    <div class="container">
+        <textarea name="mensaje" id="contenido-archivo" cols="80" rows="0" placeholder="Escribe aquí."></textarea>
+    </div>
+
+    <h2>Ingresa la llave</h2>
+    <div class="container">
+        <textarea name="password" id="demo1" cols="80" rows="0" placeholder="Escribe aquí."></textarea>
+    </div>
+
+    <h2>Cifra tu mensaje</h2>
+    <div class="container">
+        <button class="btn btn1" onclick="validar()">Cifrar</button>
+    </div>
+
+    <h2>Previsualización</h2>
+    <div class="container">
+        <textarea id="demo32" cols="80" rows="0" placeholder="Mensaje original." readonly></textarea>
+    </div>
+    <div class="container">
+        <textarea id="saldjp" cols="80" rows="0" placeholder="Mensaje cifrado." readonly></textarea>
+    </div>
+
+    <h2>Selecciona el tipo de archivo</h2>
+    <div class="container">
+        <button id="s" class="btn btn1">TXT</button>
+        <button id="d" class="btn btn1">DOC</button>
+        <button id="f" class="btn btn1">PDF</button>
+    </div>
+
+    <img src="assets/img/patos.png" alt="Mamá pato y sus patitos">
+
+    <footer>
+        Elaboró: Ibáñez Marmolejo, Miguel Gabriel (5IV8). Profesor: Jaime Minor Gómez (SWyA).
+    </footer>
+
+    <script>
+        $("#s").click(function () {
+            var cth = document.getElementById("saldjp").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            if (cth == "") {
+                alert("Antes, cifra tu mensaje.");
+            } else {
+                saveAs(blob, "Mensaje.txt");
+            }
+        });
+    </script>
+    <script>
+        $("#d").click(function () {
+            var cth = document.getElementById("saldjp").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            if (cth == "") {
+                alert("Antes, ingresa un mensaje.");
+            } else {
+                saveAs(blob, "Mensaje_descifrado.doc");
+            }
+        });
+    </script>
+    <script>
+        $("#f").click(function () {
+            var cth = document.getElementById("saldjp").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            if (cth == "") {
+                alert("Antes, ingresa un mensaje.");
+            } else {
+                saveAs(blob, "Mensaje_descifrado.pdf");
+            }
+        });
+    </script>
+</body>
+
+</html>
